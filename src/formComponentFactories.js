@@ -25,6 +25,26 @@ function createErrorSpan(spanId){
     return span;
 }
 
+function createButtonDiv(
+    submitValue = "submit", 
+    submitButtonText = "Submit",
+){
+    // Buttons with no event handlers attached
+    let div = document.createElement("div");
+    div.classList.add("buttonsDiv");
+
+    let submitButton = document.createElement("button");
+    submitButton.classList.add("submitButton");
+    submitButton.id = "submitButton";
+    submitButton.textContent = submitButtonText;
+    submitButton.value = submitValue;
+
+    div.appendChild(submitButton);
+
+    return div;
+}
+
 export {
-    createLabel, createInput, createLabelInputPair, createErrorSpan
+    createLabel, createInput, createLabelInputPair, createErrorSpan, 
+    createButtonDiv
 }

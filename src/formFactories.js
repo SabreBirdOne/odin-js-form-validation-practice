@@ -3,7 +3,8 @@ import {
     createLabel, 
     createInput, 
     createLabelInputPair, 
-    createErrorSpan
+    createErrorSpan,
+    createButtonDiv
 } from "./formComponentFactories.js"
 
 function createForm (){
@@ -36,9 +37,13 @@ function createForm (){
 
     const passwordConfirmError = createErrorSpan("passwordConfirmError");
 
+    let buttonDiv = createButtonDiv();
+    let submitButton = buttonDiv.querySelector("button#submitButton");
+
     // Event Handlers
     emailInput.addEventListener("input", ()=>{});
     
+    // Add elements to form
     for (const element of [
         emailLabel, emailInput,
         emailError,
@@ -47,7 +52,8 @@ function createForm (){
         countryPostalCodeError,
         passwordLabel, passwordInput,
         passwordConfirmLabel, passwordConfirmInput,
-        passwordConfirmError
+        passwordConfirmError,
+        buttonDiv
     ]){
         form.appendChild(element);
     }
