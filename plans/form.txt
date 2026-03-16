@@ -1,0 +1,35 @@
+Form will have Email, Country, Postal Code, Password and Password Confirmation fields.
+
+<form novalidate>
+    input email
+    span for error message on emails
+
+     <select id="country">
+        <option value="ch">Switzerland</option>
+        <option value="fr">France</option>
+        <option value="de">Germany</option>
+        <option value="nl">The Netherlands</option>
+    </select>
+    input type= text for postal code
+    span for error message on country-postal code pattern mismatches
+
+    input type=password 
+    input type password (password confirmation)
+
+    span for password confirmation errors: passwords don't match
+</form>
+
+So I need a formFactory to create this form.
+- Factory will create elements and add event listeners to them. Handlers are elsewhere.
+
+Handlers:
+- uses value of an element to check validity
+- controls the textContent of corresponding spans for error messaging.
+- includes: showEmailError, checkPostalCode, checkPasswords 
+
+A table to store country codes, country name, postal code patterns of each country and error messages for each pattern.
+- This table is used by the factory and checkPostalCode event handler.
+
+
+
+
