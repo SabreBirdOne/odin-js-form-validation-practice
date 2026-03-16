@@ -1,10 +1,7 @@
 // import countriesPostalCode table
 import {
-    createLabel, 
-    createInput, 
-    createLabelInputPair, 
-    createErrorSpan,
-    createButtonDiv
+    createLabel, createLabelInputPair, createErrorSpan, 
+    createButtonDiv, createCountrySelect
 } from "./formComponentFactories.js"
 
 function createForm (){
@@ -19,7 +16,7 @@ function createForm (){
     const emailError = createErrorSpan("emailError");
 
     const countryLabel = createLabel("Country:", "countrySelect");
-    const countrySelect = document.createElement("select");
+    const countrySelect = createCountrySelect("countrySelect");
 
     const [postalCodeLabel, postalCodeInput] = createLabelInputPair(
         "Postal Code:", "postalCodeInput", "text"

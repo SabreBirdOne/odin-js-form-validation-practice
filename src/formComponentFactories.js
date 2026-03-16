@@ -1,3 +1,5 @@
+import countriesPostalCodes from "./countriesPostalCodesTable.js";
+
 function createLabel(labelText, htmlFor){
     let label = document.createElement("label");
     label.textContent = labelText;
@@ -44,7 +46,20 @@ function createButtonDiv(
     return div;
 }
 
+function createCountrySelect(selectId){
+    let select = document.createElement("select");
+    select.id = selectId;
+
+    for (const countryCode of Object.keys(countriesPostalCodes)){
+        let option = document.createElement("option");
+        option.value = countryCode;
+        option.textContent = countriesPostalCodes[countryCode][0];
+        select.appendChild(option);
+    }
+    return select;
+}
+
 export {
     createLabel, createInput, createLabelInputPair, createErrorSpan, 
-    createButtonDiv
+    createButtonDiv, createCountrySelect
 }
