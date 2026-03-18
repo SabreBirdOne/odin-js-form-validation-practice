@@ -1,9 +1,10 @@
-// import countriesPostalCode table
 import {
     createLabel, createLabelInputPair, createErrorSpan, 
     createButtonDiv, createCountrySelect
 } from "./formComponentFactories.js"
-import { showEmailError } from "./validators.js";
+import { 
+    showEmailError, showPostalCodeError
+} from "./validators.js";
 
 function createForm (){
     // Create form with event handlers attached
@@ -45,9 +46,12 @@ function createForm (){
             emailError.classList.remove("error");
         }
         else {
-            showEmailError()
+            showEmailError();
         }
     });
+
+    countrySelect.addEventListener("change", showPostalCodeError);
+    postalCodeInput.addEventListener("input", showPostalCodeError);
 
     // Add elements to form
     for (const element of [
