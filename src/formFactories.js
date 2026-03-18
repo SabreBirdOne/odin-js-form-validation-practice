@@ -3,7 +3,8 @@ import {
     createButtonDiv, createCountrySelect
 } from "./formComponentFactories.js"
 import { 
-    showEmailError, validateCountryPostalCode, checkPasswords
+    validateCountryPostalCode, checkPasswords, isFormValid, 
+    showEmailError, showPostalCodeError, showPasswordError
 } from "./validators.js";
 
 const PASSWORD_MINLENGTH = 8;
@@ -16,6 +17,7 @@ function createForm (){
     const [emailLabel, emailInput] = createLabelInputPair(
         "Email:", "emailInput", "email"
     );
+    emailInput.required = true;
 
     const emailError = createErrorSpan("emailError");
 
@@ -41,7 +43,6 @@ function createForm (){
     const passwordConfirmError = createErrorSpan("passwordConfirmError");
 
     let buttonDiv = createButtonDiv();
-    let submitButton = buttonDiv.querySelector("button#submitButton");
     
     // Event Handlers
     emailInput.addEventListener("input", () => {
@@ -59,6 +60,20 @@ function createForm (){
 
     passwordInput.addEventListener("input", checkPasswords);
     passwordConfirmInput.addEventListener("input", checkPasswords);
+
+    form.addEventListener("submit", (event) => {
+        if (!isFormValid()){
+            showEmailError();
+            showPostalCodeError(); 
+            showPasswordError();
+            event.preventDefault();
+            
+        }
+        else {
+            
+            event.preventDefault();
+        }
+    });
 
     // Add elements to form
     for (const element of [
