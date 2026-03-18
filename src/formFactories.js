@@ -3,6 +3,7 @@ import {
     createLabel, createLabelInputPair, createErrorSpan, 
     createButtonDiv, createCountrySelect
 } from "./formComponentFactories.js"
+import { showEmailError } from "./validators.js";
 
 function createForm (){
     // Create form with event handlers attached
@@ -36,10 +37,10 @@ function createForm (){
 
     let buttonDiv = createButtonDiv();
     let submitButton = buttonDiv.querySelector("button#submitButton");
-
-    // Event Handlers
-    emailInput.addEventListener("input", ()=>{});
     
+    // Event Handlers
+    emailInput.addEventListener("input", showEmailError);
+
     // Add elements to form
     for (const element of [
         emailLabel, emailInput,
