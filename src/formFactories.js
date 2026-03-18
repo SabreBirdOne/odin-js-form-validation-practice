@@ -39,7 +39,15 @@ function createForm (){
     let submitButton = buttonDiv.querySelector("button#submitButton");
     
     // Event Handlers
-    emailInput.addEventListener("input", showEmailError);
+    emailInput.addEventListener("input", () => {
+        if (emailInput.validity.valid){
+            emailError.textContent = "";
+            emailError.classList.remove("error");
+        }
+        else {
+            showEmailError()
+        }
+    });
 
     // Add elements to form
     for (const element of [
