@@ -49,8 +49,10 @@ function checkCountryPostalCode(){
 function showPostalCodeError(){
     const countrySelect = document.querySelector("#countrySelect");
     const countryPostalCodeError = document.querySelector("#countryPostalCodeError");
-    countryPostalCodeError.textContent = countriesPostalCodes[countrySelect.value][2];
-    countryPostalCodeError.classList.add("error");
+    if (!isPostalCodeValid()){
+        countryPostalCodeError.textContent = countriesPostalCodes[countrySelect.value][2];
+        countryPostalCodeError.classList.add("error");
+    }
 }
 
 function passwordsMatch(){
