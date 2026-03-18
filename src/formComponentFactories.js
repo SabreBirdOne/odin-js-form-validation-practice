@@ -23,7 +23,7 @@ function createLabelInputPair(labelText, inputId, inputType){
 
 function createErrorSpan(spanId){
     let span = document.createElement("span");
-    span.id = "countryPostalCodeError";
+    span.id = spanId;
     return span;
 }
 
