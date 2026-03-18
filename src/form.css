@@ -4,6 +4,24 @@ form {
     align-items: baseline;
 }
 
-form span {
+form span, form div.buttonsDiv {
     margin-bottom: 1rem;
+}
+
+form span {
+    margin-top: 0.5rem;
+    padding: 0.25rem;
+}
+
+input {
+    border-radius: 5px;
+}
+
+input:invalid {
+    border: 2px solid red;
+}
+
+.error {
+  color: white;
+  background-color: #990000;
 }
