@@ -28,10 +28,12 @@ function showPostalCodeError(){
     const countryCodeSelected = countrySelect.value;
     if (checkPostalCode(countryCodeSelected)){
         countryPostalCodeError.textContent = "";
+        countryPostalCodeError.classList.remove("error");
     }
     else {
         countryPostalCodeError.textContent = 
             countriesPostalCodes[countryCodeSelected][2];
+        countryPostalCodeError.classList.add("error");
     }
 }
 
