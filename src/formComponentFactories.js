@@ -1,4 +1,5 @@
 import countriesPostalCodes from "./countriesPostalCodesTable.js";
+import thumbsUp from "../img/thumbsUp.jpg";
 
 function createLabel(labelText, htmlFor){
     let label = document.createElement("label");
@@ -59,7 +60,17 @@ function createCountrySelect(selectId){
     return select;
 }
 
+function createValidFormImg(imgId){
+    let validFormImg = document.createElement("img");
+    validFormImg.src = thumbsUp;
+    validFormImg.id = imgId;
+    validFormImg.hidden = true;
+    validFormImg.alt = "Image showing form is valid";
+    validFormImg.height = 200;
+    return validFormImg;
+}
+
 export {
     createLabel, createInput, createLabelInputPair, createErrorSpan, 
-    createButtonDiv, createCountrySelect
+    createButtonDiv, createCountrySelect, createValidFormImg
 }

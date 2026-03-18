@@ -1,6 +1,7 @@
 import {
     createLabel, createLabelInputPair, createErrorSpan, 
-    createButtonDiv, createCountrySelect
+    createButtonDiv, createCountrySelect,
+    createValidFormImg
 } from "./formComponentFactories.js"
 import { 
     checkEmail, checkCountryPostalCode, checkPasswords, isFormValid, 
@@ -43,6 +44,8 @@ function createForm (){
     const passwordConfirmError = createErrorSpan("passwordConfirmError");
 
     let buttonDiv = createButtonDiv();
+
+    const validFormImg = createValidFormImg("thumbsUp");
     
     // Event Handlers
     emailInput.addEventListener("input", checkEmail);
@@ -65,11 +68,11 @@ function createForm (){
             showEmailError();
             showPostalCodeError(); 
             showPasswordError();
+            validFormImg.hidden = true;
             event.preventDefault();
-            
         }
         else {
-            console.log("Form is valid")
+            validFormImg.hidden = false;
             event.preventDefault();
         }
     });
@@ -84,7 +87,8 @@ function createForm (){
         passwordLabel, passwordInput,
         passwordConfirmLabel, passwordConfirmInput,
         passwordConfirmError,
-        buttonDiv
+        buttonDiv,
+        validFormImg
     ]){
         form.appendChild(element);
     }
