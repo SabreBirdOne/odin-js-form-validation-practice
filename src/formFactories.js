@@ -46,12 +46,19 @@ function createForm (){
     
     // Event Handlers
     emailInput.addEventListener("input", checkEmail);
+    emailInput.addEventListener("blur", checkEmail);
 
     countrySelect.addEventListener("change", checkCountryPostalCode);
+    countrySelect.addEventListener("blur", checkCountryPostalCode);
+
     postalCodeInput.addEventListener("input", checkCountryPostalCode);
+    postalCodeInput.addEventListener("blur", checkCountryPostalCode);
 
     passwordInput.addEventListener("input", checkPasswords);
+    passwordInput.addEventListener("blur", checkPasswords);
+
     passwordConfirmInput.addEventListener("input", checkPasswords);
+    passwordConfirmInput.addEventListener("blur", checkPasswords);
 
     form.addEventListener("submit", (event) => {
         if (!isFormValid()){
