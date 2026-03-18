@@ -3,7 +3,7 @@ import {
     createButtonDiv, createCountrySelect
 } from "./formComponentFactories.js"
 import { 
-    showEmailError, showPostalCodeError, checkPostalCode
+    showEmailError, validateCountryPostalCode, checkPostalCode
 } from "./validators.js";
 
 function createForm (){
@@ -50,8 +50,8 @@ function createForm (){
         }
     });
 
-    countrySelect.addEventListener("change", showPostalCodeError);
-    postalCodeInput.addEventListener("input", showPostalCodeError);
+    countrySelect.addEventListener("change", validateCountryPostalCode);
+    postalCodeInput.addEventListener("input", validateCountryPostalCode);
 
     // Add elements to form
     for (const element of [

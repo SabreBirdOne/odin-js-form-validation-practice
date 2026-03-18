@@ -21,7 +21,7 @@ function checkPostalCode(countryCode){
     return constraint.test(postalCodeInput.value);
 }
 
-function showPostalCodeError(){
+function validateCountryPostalCode(){
     const countrySelect = document.querySelector("#countrySelect");
     const countryPostalCodeError = document.querySelector("#countryPostalCodeError");
 
@@ -31,12 +31,16 @@ function showPostalCodeError(){
         countryPostalCodeError.classList.remove("error");
     }
     else {
-        countryPostalCodeError.textContent = 
-            countriesPostalCodes[countryCodeSelected][2];
-        countryPostalCodeError.classList.add("error");
+        showPostalCodeError(countryCodeSelected);
     }
 }
 
+function showPostalCodeError(countryCode){
+    const countryPostalCodeError = document.querySelector("#countryPostalCodeError");
+    countryPostalCodeError.textContent = countriesPostalCodes[countryCode][2];
+    countryPostalCodeError.classList.add("error");
+}
+
 export {
-    showEmailError, showPostalCodeError, checkPostalCode
+    showEmailError, validateCountryPostalCode, checkPostalCode
 }
