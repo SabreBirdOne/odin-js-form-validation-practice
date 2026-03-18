@@ -18,7 +18,6 @@ function createForm (){
     const [emailLabel, emailInput] = createLabelInputPair(
         "Email:", "emailInput", "email"
     );
-    emailInput.required = true;
 
     const emailError = createErrorSpan("emailError");
 
@@ -46,6 +45,15 @@ function createForm (){
     let buttonDiv = createButtonDiv();
 
     const validFormImg = createValidFormImg("thumbsUp");
+
+    for (const element of [
+        emailInput,
+        postalCodeInput,
+        passwordInput,
+        passwordConfirmInput
+    ]){
+        element.required = true;
+    }
     
     // Event Handlers
     emailInput.addEventListener("input", checkEmail);
@@ -65,9 +73,9 @@ function createForm (){
 
     form.addEventListener("submit", (event) => {
         if (!isFormValid()){
-            showEmailError();
-            showPostalCodeError(); 
-            showPasswordError();
+            checkEmail();
+            checkCountryPostalCode(); 
+            checkPasswords();
             validFormImg.hidden = true;
             event.preventDefault();
         }
