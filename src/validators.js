@@ -13,6 +13,19 @@ function showEmailError(){
     }
 }
 
+function checkEmail(){
+    const emailInput = document.querySelector("#emailInput");
+    const emailError = document.querySelector("#emailError");
+
+    if (emailInput.validity.valid){
+        emailError.textContent = "";
+        emailError.classList.remove("error");
+    }
+    else {
+        showEmailError();
+    }
+}
+
 function isPostalCodeValid(){
     const countrySelect = document.querySelector("#countrySelect");
     const postalCodeInput = document.querySelector("#postalCodeInput");
@@ -22,7 +35,7 @@ function isPostalCodeValid(){
     return constraint.test(postalCodeInput.value);
 }
 
-function validateCountryPostalCode(){
+function checkCountryPostalCode(){
     const countryPostalCodeError = document.querySelector("#countryPostalCodeError");
     if (isPostalCodeValid()){
         countryPostalCodeError.textContent = "";
@@ -90,6 +103,6 @@ function isFormValid(){
 }
 
 export {
-    validateCountryPostalCode, checkPasswords, isFormValid, 
+    checkEmail, checkCountryPostalCode, checkPasswords, isFormValid, 
     showEmailError, showPostalCodeError, showPasswordError
 }

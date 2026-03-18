@@ -3,7 +3,7 @@ import {
     createButtonDiv, createCountrySelect
 } from "./formComponentFactories.js"
 import { 
-    validateCountryPostalCode, checkPasswords, isFormValid, 
+    checkEmail, checkCountryPostalCode, checkPasswords, isFormValid, 
     showEmailError, showPostalCodeError, showPasswordError
 } from "./validators.js";
 
@@ -45,18 +45,10 @@ function createForm (){
     let buttonDiv = createButtonDiv();
     
     // Event Handlers
-    emailInput.addEventListener("input", () => {
-        if (emailInput.validity.valid){
-            emailError.textContent = "";
-            emailError.classList.remove("error");
-        }
-        else {
-            showEmailError();
-        }
-    });
+    emailInput.addEventListener("input", checkEmail);
 
-    countrySelect.addEventListener("change", validateCountryPostalCode);
-    postalCodeInput.addEventListener("input", validateCountryPostalCode);
+    countrySelect.addEventListener("change", checkCountryPostalCode);
+    postalCodeInput.addEventListener("input", checkCountryPostalCode);
 
     passwordInput.addEventListener("input", checkPasswords);
     passwordConfirmInput.addEventListener("input", checkPasswords);
@@ -70,7 +62,7 @@ function createForm (){
             
         }
         else {
-            
+            console.log("Form is valid")
             event.preventDefault();
         }
     });
