@@ -13,7 +13,7 @@ function showEmailError(){
     }
 }
 
-function checkPostalCode(countryCode){
+function isPostalCodeValid(countryCode){
     const postalCodeInput = document.querySelector("#postalCodeInput");
     const constraint = new RegExp(
         countriesPostalCodes[countryCode][1], ""
@@ -26,7 +26,7 @@ function validateCountryPostalCode(){
     const countryPostalCodeError = document.querySelector("#countryPostalCodeError");
 
     const countryCodeSelected = countrySelect.value;
-    if (checkPostalCode(countryCodeSelected)){
+    if (isPostalCodeValid(countryCodeSelected)){
         countryPostalCodeError.textContent = "";
         countryPostalCodeError.classList.remove("error");
     }
@@ -47,17 +47,18 @@ function passwordsMatch(){
     return passwordInput.value === passwordConfirmInput.value;
 }
 
+function isPasswordsValid(){
+    return passwordInput.value 
+        && passwordConfirmInput.value 
+        && !passwordInput.validity.tooShort
+        && passwordsMatch();
+}
 function checkPasswords(){
     const passwordInput = document.querySelector("#passwordInput");
     const passwordConfirmInput = document.querySelector("#passwordConfirmInput");
     const passwordConfirmError = document.querySelector("#passwordConfirmError");
 
-    if (passwordInput.value 
-        && passwordConfirmInput.value 
-        && !passwordInput.validity.tooShort
-        && passwordsMatch()
-
-    ){
+    if (isPasswordsValid()){
         passwordConfirmError.textContent = "";
         passwordConfirmError.classList.remove("error");
     } 
@@ -84,5 +85,5 @@ function showPasswordError(){
 }
 
 export {
-    showEmailError, validateCountryPostalCode, checkPostalCode, checkPasswords
+    showEmailError, validateCountryPostalCode, checkPasswords, isPostalCodeValid, isPasswordsValid,
 }

@@ -3,7 +3,7 @@ import {
     createButtonDiv, createCountrySelect
 } from "./formComponentFactories.js"
 import { 
-    showEmailError, validateCountryPostalCode, checkPostalCode, checkPasswords
+    showEmailError, validateCountryPostalCode, checkPasswords
 } from "./validators.js";
 
 const PASSWORD_MINLENGTH = 8;
