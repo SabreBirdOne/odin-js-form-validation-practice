@@ -3,8 +3,10 @@ import {
     createButtonDiv, createCountrySelect
 } from "./formComponentFactories.js"
 import { 
-    showEmailError, validateCountryPostalCode, checkPostalCode
+    showEmailError, validateCountryPostalCode, checkPostalCode, checkPasswords
 } from "./validators.js";
+
+const PASSWORD_MINLENGTH = 8;
 
 function createForm (){
     // Create form with event handlers attached
@@ -34,6 +36,8 @@ function createForm (){
         "Confirm Password:", "passwordConfirmInput", "password"
     );
 
+    passwordInput.setAttribute("minlength", `${PASSWORD_MINLENGTH}`);
+
     const passwordConfirmError = createErrorSpan("passwordConfirmError");
 
     let buttonDiv = createButtonDiv();
@@ -52,6 +56,9 @@ function createForm (){
 
     countrySelect.addEventListener("change", validateCountryPostalCode);
     postalCodeInput.addEventListener("input", validateCountryPostalCode);
+
+    passwordInput.addEventListener("input", checkPasswords);
+    passwordConfirmInput.addEventListener("input", checkPasswords);
 
     // Add elements to form
     for (const element of [

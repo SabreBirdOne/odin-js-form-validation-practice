@@ -41,6 +41,48 @@ function showPostalCodeError(countryCode){
     countryPostalCodeError.classList.add("error");
 }
 
+function passwordsMatch(){
+    const passwordInput = document.querySelector("#passwordInput");
+    const passwordConfirmInput = document.querySelector("#passwordConfirmInput");
+    return passwordInput.value === passwordConfirmInput.value;
+}
+
+function checkPasswords(){
+    const passwordInput = document.querySelector("#passwordInput");
+    const passwordConfirmInput = document.querySelector("#passwordConfirmInput");
+    const passwordConfirmError = document.querySelector("#passwordConfirmError");
+
+    if (passwordInput.value 
+        && passwordConfirmInput.value 
+        && !passwordInput.validity.tooShort
+        && passwordsMatch()
+
+    ){
+        passwordConfirmError.textContent = "";
+        passwordConfirmError.classList.remove("error");
+    } 
+    else {
+        showPasswordError();
+    }
+}
+
+function showPasswordError(){
+    passwordConfirmError.classList.add("error");
+    passwordConfirmError.textContent = "";
+    if (!passwordInput.value){
+        passwordConfirmError.textContent += "Password is missing. ";
+    }
+    if (passwordInput.validity.tooShort){
+        passwordConfirmError.textContent += "Password is too short, minimum 8 characters. "
+    }
+    if (!passwordConfirmInput.value){
+        passwordConfirmError.textContent += "Password confirmation is missing. ";
+    }
+    if (!passwordsMatch()){
+        passwordConfirmError.textContent += "Passwords do not match.";
+    }
+}
+
 export {
-    showEmailError, validateCountryPostalCode, checkPostalCode
+    showEmailError, validateCountryPostalCode, checkPostalCode, checkPasswords
 }
