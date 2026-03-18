@@ -23,6 +23,7 @@ function checkEmail(){
     }
     else {
         showEmailError();
+        hideValidFormImg();
     }
 }
 
@@ -43,6 +44,7 @@ function checkCountryPostalCode(){
     }
     else {
         showPostalCodeError();
+        hideValidFormImg();
     }
 }
 
@@ -76,6 +78,7 @@ function checkPasswords(){
     } 
     else {
         showPasswordError();
+        hideValidFormImg();
     }
 }
 
@@ -102,6 +105,11 @@ function isFormValid(){
         && isPostalCodeValid()
         && isPasswordsValid()
     )
+}
+
+function hideValidFormImg(){
+    const validFormImg = document.querySelector("#thumbsUp");
+    validFormImg.hidden = true;
 }
 
 export {
