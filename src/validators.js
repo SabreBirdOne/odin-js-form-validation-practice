@@ -13,20 +13,20 @@ function showEmailError(){
     }
 }
 
-function checkPostalCode(countryCode, postalCode){
+function checkPostalCode(countryCode){
+    const postalCodeInput = document.querySelector("#postalCodeInput");
     const constraint = new RegExp(
         countriesPostalCodes[countryCode][1], ""
     );
-    return constraint.test(postalCode);
+    return constraint.test(postalCodeInput.value);
 }
 
 function showPostalCodeError(){
     const countrySelect = document.querySelector("#countrySelect");
-    const postalCodeInput = document.querySelector("#postalCodeInput");
     const countryPostalCodeError = document.querySelector("#countryPostalCodeError");
 
     const countryCodeSelected = countrySelect.value;
-    if (checkPostalCode(countryCodeSelected, postalCodeInput.value)){
+    if (checkPostalCode(countryCodeSelected)){
         countryPostalCodeError.textContent = "";
     }
     else {
@@ -36,5 +36,5 @@ function showPostalCodeError(){
 }
 
 export {
-    showEmailError, showPostalCodeError
+    showEmailError, showPostalCodeError, checkPostalCode
 }

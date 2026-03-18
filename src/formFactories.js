@@ -3,7 +3,7 @@ import {
     createButtonDiv, createCountrySelect
 } from "./formComponentFactories.js"
 import { 
-    showEmailError, showPostalCodeError
+    showEmailError, showPostalCodeError, checkPostalCode
 } from "./validators.js";
 
 function createForm (){
